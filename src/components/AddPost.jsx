@@ -5,17 +5,19 @@ import { createPostAction } from "../redux/actions/postActions";
 const AddPostForm = () => {
     const [title, setTitle] = useState("");
     const [post, setPost] = useState("");
+    // const [likes, setLikes] = useState(0)
 
     const dispatch = useDispatch();
 
     const handleAddPost = () => {
-        // Validate the inputs
+        
 
-        const id = Math.floor(Math.random() * 136736723);
-        dispatch(createPostAction({ title, post, id, likes: [] }));
+        const id = Math.floor(Math.random() * 10000000);
+        dispatch(createPostAction({ title, post, id, likes:0 }));
 
         setTitle("");
         setPost("");
+        // setLikes(0)
     };
 
     return (
@@ -53,3 +55,4 @@ const AddPostForm = () => {
 };
 
 export default AddPostForm;
+

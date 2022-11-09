@@ -13,11 +13,17 @@ export const postReducer= (state = initialState, action) => {
 			const newPosts = state.posts.filter(post => post.id !== action.id);
 			return { ...state, posts: newPosts };
         case LIKE_POST_ACTION:
-            const likedPosts = state.posts.filter(post => post.id === action.id);
-                likedPosts[0].likes+=1;
-            const unlikedPosts =state.posts.filter(post => post.id !== action.id);
-            const allPosts= [...unlikedPosts,likedPosts];
-            return { ...state, posts: allPosts };    
+            const updatedPosts = state.posts.map((post) => {
+                if (post.id === action.id) {
+                    post.likes = post.likes + 1
+                }
+                return post
+            })
+            // const likedPosts = state.posts.filter(post => post.id === action.id);
+            //     likedPosts[0].likes+=1;
+            // const unlikedPosts =state.posts.filter(post => post.id !== action.id);
+            // const allPosts= [...unlikedPosts,...likedPosts];
+            return { ...state, posts: updatedPosts };    
         default:
             return state;
     }

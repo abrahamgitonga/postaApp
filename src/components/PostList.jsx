@@ -11,7 +11,7 @@ const PostsList = () => {
     };
 
     const handleLikedPost =(id)=>{
-        dispatch(likePostAction());
+        dispatch(likePostAction(id));
     };
   
     return (
@@ -25,7 +25,7 @@ const PostsList = () => {
                     <div className="flex flex-col gap-2">
                         <button 
                             onClick={()=> handleLikedPost(post?.id)} className="bg-green-400 text-white rounded-lg p-1">
-                            Like {post?.like}
+                            Like {post?.likes}
                         </button>
                         <button
                             onClick={() => handleDeletePost(post?.id)}
